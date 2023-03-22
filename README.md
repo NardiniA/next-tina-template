@@ -1,38 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) template using the `app` directory with [Tina CMS](https://tina.io/). 
 
 ## Getting Started
 
-First, run the development server:
+1. Set environment variables using `.env`, `.env.local` or any other way you wish. Include your cloudinary cloud name, apikey and api secret. Use the `.env.example` file to guide you on what to add. 
+
+2. Install Dependencies:
+
+```bash
+npm install
+# or
+yarn
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the results.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start adding content by navigating to [/admin](http://localhost:3000/admin).
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Project Structure
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This template uses the src directory and the app directory (beta). Please refer to the [Next.js `appDir`](https://beta.nextjs.org/docs) docs for more information on how to develop your project.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The CMS configuration is found at `.tina/config.ts`. This directory is modular to help better organise the project so you do not have to repeat code (DRY). It provides a base for you to start, including:
+- Blog schema with a title, excerpt, date, tags, image, rich text content. Content is saved as MDX.
+- Pages schema with a page name, page information (title and description), hero section and page sections. Saved as JSON.
+- Tags schema with a tagname. The blog references this collection. Saved as JSON.
+- Menus schema (This acts as a data file so there is one file in the collection which cannot be created or deleted), it includes a Main Menu list and call to action object.
+- Site Configuration schema with logos, meta data, developer settings and more. Saved as JSON. This also acts as a data file like the Menus schema.
+
+Note that you can add custom MDX components into the rich text fields. You can also add custom React components to any field. For more information please follow the [Tina CMS docs](https://tina.io/docs/extending-tina/custom-field-components/).
+
+This template also provides some simple utility functions such as a `deepMerge` function to allow you to create overridable CMS field functions. It also has other fields such as URL fields that can be reused.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+For any more information, please refer to the [Tina CMS Docs](https://tina.io/docs) and the [Next.js Beta Docs](https://beta.nextjs.org/docs). 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Issues
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Tina CMS is still reasonably new so there are still some features missing. Please keep up to date with Tina CMS releases and contribute if you can. If there is anything that we can do to improve this boilerplate please let me know.
